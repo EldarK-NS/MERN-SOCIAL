@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://Eldar:qwerty123@cluster0.7hbdn.mongodb.net/socialNetwork?retryWrites=true&w=majority",
+    "jwtSecret":"secrettoken"
+}
