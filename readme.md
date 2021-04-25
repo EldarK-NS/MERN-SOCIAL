@@ -5,3 +5,53 @@ body-parser-Чтобы обрабатывать запрос HTTP POST в Экс
 
 populate()-?
 const profile = await (await Profile.findOne({ user: req.user.id })).populated('user', ['name', 'avatar'])
+
+
+**REDUX**
+
+1. создаем файл store.js
+импортируем :
+<import {createStore, applyMiddleware} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import rootReducer from './reducers'
+
+<const initialState={}
+
+<const middleware=[thunk]
+
+<const store=createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
+)
+
+<export default store
+
+
+
+2. в App.js импортируем
+import {Provider} from 'react-redux'
+import store from'./store'
+оборачиваем все в Provider
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <Fragment >
+          <Navbar />
+          <Route exact path='/' component={Landing} />
+          <section className="container">
+            <Switch>
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
+    </Provider>
+  );
+}
+
+3. создаем папку reducers/index.js 
